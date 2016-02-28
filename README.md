@@ -16,7 +16,7 @@ React-map-reduce is also meant as a way to make react components more declarativ
 
 ## How do I use it?
 
-The below examples are meant to be a minimal library reference. For more complete examples, see the examples folder.
+The below examples are meant to be a minimal library reference. For more complete examples, see the examples folder by running ``npm start`` and navigating to [http://localhost:3000/examples/](http://localhost:3000/examples/).
 
 ### Reducer
 
