@@ -1,15 +1,20 @@
 {
   "name": "react-map-reduce",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "calculates derived data from props, then applies the derived data",
   "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "example": "examples"
+  "files": [
+  	"lib",
+  	"src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrbala/react-map-reduce.git"
   },
   "scripts": {
     "start": "simple-server 3000",
     "build": "rm -rf lib && babel src --out-dir lib",
+    "upload": "npm run build && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src"
   },
