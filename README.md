@@ -43,37 +43,37 @@ Plugins also have access to a subset of the Reducer's plugin as this.props. This
 
 ```javascript
 class keyevent extends Plugin {
-	constructor() {
-		super()
-		this.event = null
-	}
+  constructor() {
+    super()
+    this.event = null
+  }
 
-	handleEvent(event) {
-		this.event = event
-		this.forceUpdate()	// forceUpdate updates the plugin's Reducer component
-	}
+  handleEvent(event) {
+    this.event = event
+    this.forceUpdate()  // forceUpdate updates the plugin's Reducer component
+  }
 
-	// Required if stop is implemented. Executes when the plugin is attached to the Reducer.
-	start() {
-		window.onkeydown = ::this.handleEvent
-		window.onkeyup = ::this.handleEvent
-	}
-	
-	// Optional. Executes when the plugin's Reducer changes props.
-	update() { }
+  // Required if stop is implemented. Executes when the plugin is attached to the Reducer.
+  start() {
+    window.onkeydown = ::this.handleEvent
+    window.onkeyup = ::this.handleEvent
+  }
+  
+  // Optional. Executes when the plugin's Reducer changes props.
+  update() { }
 
-	// Required if start is implemented. Executes when the plugin is detached 
-	// from the reducer or when the reducer is unmounted.
-	stop() {
-		window.onkeydown = null
-		window.onkeyup = null
-	}
+  // Required if start is implemented. Executes when the plugin is detached 
+  // from the reducer or when the reducer is unmounted.
+  stop() {
+    window.onkeydown = null
+    window.onkeyup = null
+  }
 
-	// Required. The result is passed down to other Reducers and Mappers in 
-	// the component tree
-	reduce() {
-		return this.event
-	}
+  // Required. The result is passed down to other Reducers and Mappers in 
+  // the component tree
+  reduce() {
+    return this.event
+  }
 }
 
 // A plugin's dependents access the plugin's data via the plugin's namespace. 
@@ -91,8 +91,8 @@ Stateless plugins are functions of props and context. They are equivalent to sim
 ```javascript
 // This plugin returns just the code from a keyevent.
 function keycode() {
-	var { code } = this.context.keyevent
-	return code
+  var { code } = this.context.keyevent
+  return code
 }
 ```
 
@@ -101,13 +101,13 @@ Plugin settings are attached to the stateless function itself in the case of a s
 
 ```javascript
 keycode.defaultProps = {
-	someProp: 'someValue'
+  someProp: 'someValue'
 }
 
 // contextTypes must be specified for access to context
 // Simply mark required context as true - not propTypes like in React
 keycode.contextTypes = {
-	keyevent: true
+  keyevent: true
 }
 
 keycode.namespace = 'keycode'
@@ -125,17 +125,17 @@ Mappers are the outputs of react-map-reduce. Like Reducers, they can contain and
 // The map function returns an object that is merged with each of the Reducer's children's
 // actual props. Returning undefined will leave the children's props unchanged.
 function displayKeyEvent(childProps) {
-	var { keyevent } = this.context
-	if (!keyevent)
-		return
+  var { keyevent } = this.context
+  if (!keyevent)
+    return
 
-	var { type, code } = this.context.keyevent
-	var text = `${type} ${code}`
-	return { text }
+  var { type, code } = this.context.keyevent
+  var text = `${type} ${code}`
+  return { text }
 }
 
 displayKeyEvent.contextTypes = {
-	keyevent: true
+  keyevent: true
 }
 
 // in a React render()
